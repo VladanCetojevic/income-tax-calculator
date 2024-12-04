@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator troškova za SP u Republici Srpskoj 2024/2025</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Spinnaker&display=swap');
-
         body {
-            font-family: 'Spinnaker', sans-serif;
-            margin: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
             padding: 0;
             display: flex;
             flex-direction: column;
@@ -34,7 +32,7 @@
             max-width: 600px;
             width: 100%;
         }
-        input[type="number"] {
+        input[type="text"] {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -64,22 +62,22 @@
     <div class="calculator">
         <h1>Kalkulator troškova za SP u Republici Srpskoj 2024/2025</h1>
         <label for="income">Unesite svoj ukupni prihod (BAM mesečno):</label>
-        <input type="number" id="income" placeholder="npr. 3000" required>
+        <input type="text" id="income" placeholder="npr. 3000" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" required>
         
         <label for="misc">Dodatni troškovi (BAM):</label>
-        <input type="number" id="misc" value="20">
+        <input type="text" id="misc" value="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
         
         <label for="accountant2024">Računovodstvene naknade (2024, BAM):</label>
-        <input type="number" id="accountant2024" value="85" onchange="updateAccountant2025()">
+        <input type="text" id="accountant2024" value="85" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" onchange="updateAccountant2025()">
         
         <label for="accountant2025">Računovodstvene naknade (2025, BAM) [Procjena 2x onih iz 2024]:</label>
-        <input type="number" id="accountant2025" value="170" readonly>
+        <input type="text" id="accountant2025" value="170" readonly>
         
         <label for="socialSecurity2024">Doprinosi (2024, BAM):</label>
-        <input type="number" id="socialSecurity2024" value="360.28" readonly>
+        <input type="text" id="socialSecurity2024" value="360.28" readonly>
         
         <label for="socialSecurity2025">Doprinosi (2025, BAM):</label>
-        <input type="number" id="socialSecurity2025" value="660.30" readonly>
+        <input type="text" id="socialSecurity2025" value="660.30" readonly>
         
         <button onclick="calculate()">Izračunaj</button>
     </div>
@@ -123,7 +121,7 @@
             document.getElementById('results').scrollIntoView({ behavior: "smooth" });
 
             // Display results
-            document.getElementById('results').innerHTML = 
+            document.getElementById('results').innerHTML = `
                 <h3>Rezultati</h3>
                 <p><strong>2024:</strong></p>
                 <ul>
@@ -142,7 +140,7 @@
                     <li>Povećanje Troškova: <span class="highlight">${expensesIncreasePercent.toFixed(2)}%</span></li>
                     <li>Smanjenje Profita: <span class="highlight">${profitDecreasePercent.toFixed(2)}%</span></li>
                 </ul>
-            ;
+            `;
         }
     </script>
 </body>
