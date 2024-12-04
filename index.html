@@ -9,7 +9,7 @@
 
         body {
             font-family: 'Spinnaker', sans-serif;
-            margin: 20px;
+            margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
@@ -64,22 +64,22 @@
     <div class="calculator">
         <h1>Kalkulator troškova za SP u Republici Srpskoj 2024/2025</h1>
         <label for="income">Unesite svoj ukupni prihod (BAM mesečno):</label>
-        <input type="text" id="income" placeholder="npr. 3000" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" required>
+        <input type="number" id="income" placeholder="npr. 3000" required>
         
         <label for="misc">Dodatni troškovi (BAM):</label>
-        <input type="text" id="misc" value="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+        <input type="number" id="misc" value="20">
         
         <label for="accountant2024">Računovodstvene naknade (2024, BAM):</label>
-        <input type="text" id="accountant2024" value="85" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" onchange="updateAccountant2025()">
+        <input type="number" id="accountant2024" value="85" onchange="updateAccountant2025()">
         
         <label for="accountant2025">Računovodstvene naknade (2025, BAM) [Procjena 2x onih iz 2024]:</label>
-        <input type="text" id="accountant2025" value="170" readonly>
+        <input type="number" id="accountant2025" value="170" readonly>
         
         <label for="socialSecurity2024">Doprinosi (2024, BAM):</label>
-        <input type="text" id="socialSecurity2024" value="360.28" readonly>
+        <input type="number" id="socialSecurity2024" value="360.28" readonly>
         
         <label for="socialSecurity2025">Doprinosi (2025, BAM):</label>
-        <input type="text" id="socialSecurity2025" value="660.30" readonly>
+        <input type="number" id="socialSecurity2025" value="660.30" readonly>
         
         <button onclick="calculate()">Izračunaj</button>
     </div>
@@ -123,7 +123,7 @@
             document.getElementById('results').scrollIntoView({ behavior: "smooth" });
 
             // Display results
-            document.getElementById('results').innerHTML = `
+            document.getElementById('results').innerHTML = 
                 <h3>Rezultati</h3>
                 <p><strong>2024:</strong></p>
                 <ul>
@@ -142,7 +142,7 @@
                     <li>Povećanje Troškova: <span class="highlight">${expensesIncreasePercent.toFixed(2)}%</span></li>
                     <li>Smanjenje Profita: <span class="highlight">${profitDecreasePercent.toFixed(2)}%</span></li>
                 </ul>
-            `;
+            ;
         }
     </script>
 </body>
