@@ -66,10 +66,10 @@
         <input type="text" id="income" placeholder="npr. 3000" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')" required>
         
         <label for="misc">Dodatni troškovi (BAM):</label>
-        <input type="text" id="misc" value="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+        <input type="text" id="misc" value="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')">
         
         <label for="accountant2024">Računovodstvene naknade (2024, BAM):</label>
-        <input type="text" id="accountant2024" value="85" oninput="this.value = this.value.replace(/[^0-9.]/g, '')" onchange="updateAccountant2025()">
+        <input type="text" id="accountant2024" value="85" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')" onchange="updateAccountant2025()">
         
         <label for="accountant2025">Računovodstvene naknade (2025, BAM) [Procjena 2x onih iz 2024]:</label>
         <input type="text" id="accountant2025" value="170" readonly>
